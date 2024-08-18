@@ -11,6 +11,7 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
+//configuração da conexão ao banco de dados
 const mysql = require('mysql2');
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -24,3 +25,10 @@ connection.connect((err) => {
     if (err) throw err;
     console.log('Connected to MySQL!');
 });
+
+// integrando a Rota ao Servidor Principal
+const jogosRouter = require('./routers/jogos');
+
+app.use(express.json()); // Para analisar JSON
+app.use('/api/jogos', jogosRouter);
+
