@@ -1,9 +1,9 @@
-const mysql = requise('mysql12');
+const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user = 'root',
-    password: '1963';
+    user: 'root',
+    password: '1963',
     database: 'encontra_jogo_volei'
 });
 
