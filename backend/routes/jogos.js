@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 // Rota para criar um novo jogo
-router.post('/', (res, res) => {
+router.post('/', (req, res) => {
     // Lógica para criar um jogo
     res.send('Jogo criado');
 });
