@@ -7,6 +7,8 @@ INSTRUÇÕES PARA RODAR O SERVIDOR
 FRONTEND  
 - Uma vez que o npm esteja instalado, acesse o caminho "encontra_jogo_volei\frontend"  
 - Rode o comando "npm start"  
+- portas  
+- versão  
 
 BACKEND  
 - Uma vez que o node esteja instalado, acesso o caminho "encontra_jogo_volei\backend"  
