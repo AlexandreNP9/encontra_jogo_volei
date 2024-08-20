@@ -1,4 +1,5 @@
 -- Script para criação das tabelas no banco de dados 'encontra_jogo_volei'
+CREATE DATABASE IF NOT EXISTS encontra_jogo_volei;
 USE encontra_jogo_volei;
 
 -- Tabela Usuário (autenticação)
