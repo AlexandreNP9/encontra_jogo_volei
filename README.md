@@ -6,13 +6,27 @@ O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jo
 INSTRUÇÕES PARA RODAR O SERVIDOR  
 FRONTEND  
 - Uma vez que o npm esteja instalado, acesse o caminho "encontra_jogo_volei\frontend"  
+- Rode o comando "npm install" para instalar as dependências do arquivo package.json  
 - Rode o comando "npm start"  
-- portas  
-- versão  
+- A porta padrão do React é a 3000    
+- Minha versão utilizada foi a    
+
+BANCO DE DADOS
+- Uma vez que o MySQL Workbanch esteja instalado, abra sua conexão  
+- A porta padrão da conexão é a 3006  
+- Acesse o caminho "DOCUMENTOS" e execute o script "encontra_jogo_volei.mwb"  
 
 BACKEND  
-- Uma vez que o node esteja instalado, acesso o caminho "encontra_jogo_volei\backend"  
-- Rode o comando "node index.js"
+- Altere as credenciais do backend com o banco de dados. 
+    - Acesse o caminho "encontra_jogo_volei\backend"  
+    - Confira que as seguintes informações estejam de acordo com o seu banco de dados:  
+        host: 'localhost',  
+        user: 'root',  
+        password: 'root', // Verifique a senha do usuário root  
+        database: 'encontra_jogo_volei'  
+
+- Uma vez que o node esteja instalado, rode o comando "node index.js"  
+- A porta padrão do Node.js é a 3001
 
 ----------------------------------------  
 
