@@ -36,6 +36,10 @@ app.use((req, res, next) => {
 const usuariosRoutes = require('./routes/usuarios');
 app.use('/usuarios', usuariosRoutes);
 
+// Importação e uso das quadras
+const quadrasRoutes = require('./routes/quadras');
+app.use('/quadras', quadrasRoutes);
+
 // Porta do servidor
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
