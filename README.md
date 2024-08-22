@@ -1,68 +1,70 @@
-# encontra_jogo
-O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jogar vôlei encontrar um jogo.
+# Encontra Jogo de Vôlei  
+O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jogar vôlei a encontrar jogos.  
 
-----------------------------------------  
+--------------------------------------------------
 
-INSTRUÇÕES PARA RODAR O SERVIDOR  
-AUTENTICAÇÃO  
-- Vá para o caminho /frontend 
-- Instale o vite para rodar o clerk:  
+## Instruções para Rodar os Servidores  
+### Autenticação  
+-> Configurar o Vite e Clerk:  
+Navegue até o diretório /frontend.  
+Instale o Vite para rodar o Clerk:  
     npm create vite@latest clerk-react -- --template react-ts  
     cd clerk-react  
     npm install  
     npm run dev  
-- Deixe o servidor rodando
-- Versão utilizada do vite: v5.4.2  
-- Porta padrão do vite: 5173  
+Deixe o servidor rodando.  
+Versão do Vite utilizada: v5.4.2  
+Porta padrão do Vite: 5173  
 
-- Instalar o clerck  
-- Em outro terminal, vá para o caminho /frontend 
-- Instale o clerk
+-> Instalar o Clerk e React Router:  
+Em outro terminal, ainda no diretório /frontend, instale o Clerk e o React Router:  
     npm install @clerk/clerk-react  
-- Instale o react-router-dom  
     npm install react-router-dom  
 
-FRONTEND  
-- Uma vez que o npm esteja instalado, acesse o caminho "encontra_jogo_volei\frontend"  
-- Rode o comando "npm install" para instalar as dependências do arquivo package.json  
-- Rode o comando "npm start"  
-- A porta padrão do React é a 3000    
-- Versão utilizada do npm: 10.8.1  
+### Frontend  
+No diretório encontra_jogo_volei/frontend, instale as dependências do projeto:  
+    npm install  
+    npm start  
+Porta padrão do React: 3000  
+Versão do npm utilizada: 10.8.1  
 
-BANCO DE DADOS
-- Uma vez que o MySQL Workbanch esteja instalado, abra sua conexão  
-- A porta padrão da conexão é a 3006  
-- Acesse o caminho "DOCUMENTOS" e execute o script "encontra_jogo_volei.mwb"  
-- Versão utilizada do MySQL Workbanch: 8.0.38
+### Banco de Dados  
+Com o MySQL Workbench instalado, abra sua conexão.  
+Porta padrão da conexão: 3306  
+No MySQL Workbench, execute o script encontra_jogo_volei.mwb para configurar o banco de dados.  
+Versão do MySQL Workbench utilizada: 8.0.38  
 
-BACKEND  
-- Altere as credenciais do backend com o banco de dados. 
-    - Acesse o caminho "encontra_jogo_volei\backend"  
-    - Confira que as seguintes informações estejam de acordo com o seu banco de dados:  
-        host: 'localhost',  
-        user: 'root',  
-        password: 'root', // Verifique a senha do usuário root  
-        database: 'encontra_jogo_volei'  
+### Backend  
+-> Configuração do Banco de Dados:  
+No diretório encontra_jogo_volei/backend, edite o arquivo de configuração do banco de dados para garantir que as credenciais estejam corretas:  
+    host: 'localhost',  
+    user: 'root',  
+    password: 'root', // Verifique a senha do usuário root  
+    database: 'encontra_jogo_volei'  
 
-- Uma vez que o node esteja instalado, rode o comando "node index.js"  
-- A porta padrão do Node.js é a 3001
-- Versão utilizada do Node.js: v20.16.0  
+-> Executar o Backend:  
+Com o Node.js instalado, rode o servidor:  
+    node index.js  
+Porta padrão do Node.js: 3001  
+Versão do Node.js utilizada: v20.16.0  
 
-----------------------------------------  
+--------------------------------------------------
 
-Especificações em:
-https://www.notion.so/Encontra-Jogo-de-V-lei-b0be4f175cd843fcad43bde215b51387
+## Especificações do Projeto  
+Para mais detalhes sobre o projeto, acesse: Especificações  
 
-TECNOLOGIAS:
+--------------------------------------------------
+
+## Tecnologias  
 FrontEnd: React  
-BackEnd: Node.JS  
+BackEnd: Node.js  
 Banco de Dados: MySQL  
 
-FERRAMENTAS:
-Postman: teste de API  
-Visual Studio Code: editor de código  
-GitHub Projects: gerenciador de tarefas e hospedagem de código  
+## Ferramentas  
+Postman: Teste de API  
+Visual Studio Code: Editor de código  
+GitHub Projects: Gerenciador de tarefas e hospedagem de código  
 
-FRAMEWORKS  
-Clerk: autenticação  
-    vite: instalador do Clerk
+## Frameworks  
+Clerk: Autenticação  
+Vite: Instalador do Clerk  
