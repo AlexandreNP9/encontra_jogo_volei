@@ -69,13 +69,19 @@ exports.atualizarUsuario = (req, res) => {
 exports.deletarUsuario = (req, res) => {
     const { id } = req.params;
 
-    db.query('DELETE FROM usuarios WHERE id = ?', [id], (err, result) => {
+    db.query('DELETE FROM jogadores WHERE usuario_id = ?', [id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Usuário não encontrado' });
-        }
-        res.status(200).json({ message: 'Usuário e Jogador deletados com sucesso!' });
+
+        db.query('DELETE FROM usuarios WHERE id = ?', [id], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+            if (result.affectedRows === 0) {
+                return res.status(404).json({ message: 'Usuário não encontrado' });
+            }
+            res.status(200).json({ message: 'Usuário e Jogador deletados com sucesso!' });
+        });
     });
 };
