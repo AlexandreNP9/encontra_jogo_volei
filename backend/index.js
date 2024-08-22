@@ -44,6 +44,10 @@ app.use('/quadras', quadrasRoutes);
 const jogosRoutes = require('./routes/jogos');
 app.use('/jogos', jogosRoutes);
 
+// Importação e uso das inscrições
+const inscricoesRoutes = require('./routes/inscricoes');
+app.use('/inscricoes', inscricoesRoutes);
+
 // Porta do servidor
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
