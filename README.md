@@ -8,10 +8,10 @@ O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jo
 -> Configurar o Vite e Clerk:  
 Navegue até o diretório /frontend.  
 Instale o Vite para rodar o Clerk:  
-_npm create vite@latest clerk-react -- --template react-ts  
-_cd clerk-react  
-_npm install  
-_npm run dev  
+    npm create vite@latest clerk-react -- --template react-ts  
+    cd clerk-react  
+    npm install  
+    npm run dev  
 Deixe o servidor rodando.  
 Versão do Vite utilizada: v5.4.2  
 Porta padrão do Vite: 5173  
