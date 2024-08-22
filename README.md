@@ -9,12 +9,13 @@ FRONTEND
 - Rode o comando "npm install" para instalar as dependências do arquivo package.json  
 - Rode o comando "npm start"  
 - A porta padrão do React é a 3000    
-- Minha versão utilizada foi a    
+- Versão utilizada do npm: 10.8.1  
 
 BANCO DE DADOS
 - Uma vez que o MySQL Workbanch esteja instalado, abra sua conexão  
 - A porta padrão da conexão é a 3006  
 - Acesse o caminho "DOCUMENTOS" e execute o script "encontra_jogo_volei.mwb"  
+- Versão utilizada do MySQL Workbanch: 8.0.38
 
 BACKEND  
 - Altere as credenciais do backend com o banco de dados. 
@@ -27,6 +28,7 @@ BACKEND
 
 - Uma vez que o node esteja instalado, rode o comando "node index.js"  
 - A porta padrão do Node.js é a 3001
+- Versão utilizada do Node.js: v20.16.0  
 
 ----------------------------------------  
 
