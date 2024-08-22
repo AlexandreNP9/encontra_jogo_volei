@@ -4,6 +4,24 @@ O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jo
 ----------------------------------------  
 
 INSTRUÇÕES PARA RODAR O SERVIDOR  
+AUTENTICAÇÃO  
+- Vá para o caminho /frontend 
+- Instale o vite para rodar o clerk:  
+    npm create vite@latest clerk-react -- --template react-ts  
+    cd clerk-react  
+    npm install  
+    npm run dev  
+- Deixe o servidor rodando
+- Versão utilizada do vite: v5.4.2  
+- Porta padrão do vite: 5173  
+
+- Instalar o clerck  
+- Em outro terminal, vá para o caminho /frontend 
+- Instale o clerk
+    npm install @clerk/clerk-react  
+- Instale o react-router-dom  
+    npm install react-router-dom  
+
 FRONTEND  
 - Uma vez que o npm esteja instalado, acesse o caminho "encontra_jogo_volei\frontend"  
 - Rode o comando "npm install" para instalar as dependências do arquivo package.json  
@@ -44,3 +62,7 @@ FERRAMENTAS:
 Postman: teste de API  
 Visual Studio Code: editor de código  
 GitHub Projects: gerenciador de tarefas e hospedagem de código  
+
+FRAMEWORKS  
+Clerk: autenticação  
+    vite: instalador do Clerk
