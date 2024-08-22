@@ -2,10 +2,10 @@ const db = require('../config/db');
 
 // Criar um novo jogo
 exports.criarJogo = (req, res) => {
-    const { organizador_id, dia, horario_inicio, horario_fim, quadra, genero, idade } = req.body;
+    const { organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero } = req.body;
 
-    const query = 'INSERT INTO jogos (organizador_id, dia, horario_inicio, horario_fim, quadra, genero, idade) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    db.query(query, [organizador_id, dia, horario_inicio, horario_fim, quadra, genero, idade], (err, result) => {
+    const query = 'INSERT INTO jogos (organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -16,6 +16,7 @@ exports.criarJogo = (req, res) => {
 // Obter todos os jogos ou filtrar por organizador
 exports.obterJogos = (req, res) => {
     const { organizador_id } = req.query;
+
     let query = 'SELECT * FROM jogos';
     const params = [];
 
@@ -24,21 +25,22 @@ exports.obterJogos = (req, res) => {
         params.push(organizador_id);
     }
 
-    db.query(query, params, (err, results) => {
+    db.query(query, params, (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(200).json(results);
+        res.status(200).json(result);
     });
 };
+
 
 // Atualizar um jogo específico
 exports.atualizarJogo = (req, res) => {
     const { id } = req.params;
-    const { dia, horario_inicio, horario_fim, quadra, genero, idade } = req.body;
+    const { organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero } = req.body;
 
-    const query = 'UPDATE jogos SET dia = ?, horario_inicio = ?, horario_fim = ?, quadra = ?, genero = ?, idade = ? WHERE id = ?';
-    db.query(query, [dia, horario_inicio, horario_fim, quadra, genero, idade, id], (err) => {
+    const query = 'UPDATE jogos SET organizador_id = ?, quadra_id = ?, nome = ?, data = ?, horario_inicio = ?, horario_fim = ?, genero = ? WHERE id = ?';
+    db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
