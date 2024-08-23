@@ -4,9 +4,11 @@ O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jo
 --------------------------------------------------
 
 ## Instruções para Rodar os Servidores  
+Siga os passos, em ordem.
+
 ### Autenticação  
 -> Configurar o Vite e Clerk:  
-Navegue até o diretório /frontend.  
+No terminal, navegue até o diretório /frontend.  
 Instale o Vite para rodar o Clerk:  
     npm create vite@latest clerk-react -- --template react-ts  
     cd clerk-react  
