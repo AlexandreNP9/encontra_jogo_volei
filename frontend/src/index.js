@@ -1,19 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { ClerkProvider } from '@clerk/clerk-react'; // Importando ClerkProvider
-import './index.css';
+import ReactDOM from 'react-dom/client';
+import './styles.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-// Substitua 'your-clerk-frontend-api' pelo valor real de sua API key.
-const clerkFrontendApi = `import.meta.env.VITE_CLERK_PUBLISHABLE_KEY`;
-
-ReactDOM.render(
-  <ClerkProvider frontendApi={clerkFrontendApi}>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
     <App />
-  </ClerkProvider>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
-
-// Função opcional para medir a performance da aplicação
-reportWebVitals();
