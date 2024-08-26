@@ -6,30 +6,6 @@ O "Encontra Jogo de Vôlei" é um sistema para ajudar pessoas interessadas em jo
 ## Instruções para Rodar os Servidores  
 Siga os passos, em ordem.
 
-### Autenticação  
--> Configurar o Vite e Clerk:  
-No terminal, navegue até o diretório /frontend.  
-Instale o Vite para rodar o Clerk:  
-    npm create vite@latest clerk-react -- --template react-ts  
-    cd clerk-react  
-    npm install  
-    npm run dev  
-Deixe o servidor rodando.  
-Versão do Vite utilizada: v5.4.2  
-Porta padrão do Vite: 5173  
-
--> Instalar o Clerk e React Router:  
-Em outro terminal, ainda no diretório /frontend, instale o Clerk e o React Router:  
-    npm install @clerk/clerk-react  
-    npm install react-router-dom  
-
-### Frontend  
-No diretório encontra_jogo_volei/frontend, instale as dependências do projeto:  
-    npm install  
-    npm start  
-Porta padrão do React: 3000  
-Versão do npm utilizada: 10.8.1  
-
 ### Banco de Dados  
 Com o MySQL Workbench instalado, abra sua conexão.  
 Porta padrão da conexão: 3306  
@@ -50,6 +26,13 @@ Com o Node.js instalado, rode o servidor:
 Porta padrão do Node.js: 3001  
 Versão do Node.js utilizada: v20.16.0  
 
+### Frontend  
+No diretório encontra_jogo_volei/frontend, instale as dependências do projeto:  
+    npm install  
+    npm start  
+Porta padrão do React: 3000  
+Versão do npm utilizada: 10.8.1  
+
 --------------------------------------------------
 
 ## Especificações do Projeto  
@@ -66,7 +49,3 @@ Banco de Dados: MySQL
 Postman: Teste de API  
 Visual Studio Code: Editor de código  
 GitHub Projects: Gerenciador de tarefas e hospedagem de código  
-
-## Frameworks  
-Clerk: Autenticação  
-Vite: Instalador do Clerk  
