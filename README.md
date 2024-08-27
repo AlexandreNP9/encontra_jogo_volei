@@ -23,6 +23,8 @@ No diretório encontra_jogo_volei/backend, edite o arquivo de configuração do 
 -> Executar o Backend:  
 Com o Node.js instalado, rode o servidor:  
     npm install express
+    npm install mysql2  
+    npm install cors  
     node index.js  
 Porta padrão do Node.js: 3001  
 Versão do Node.js utilizada: v20.16.0  

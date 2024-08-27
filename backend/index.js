@@ -1,7 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors'); // Importa o pacote cors
 
 const app = express();
+
+// Middleware para habilitar o CORS
+app.use(cors());
 
 // Middleware para analisar JSON
 app.use(express.json());
@@ -35,6 +39,10 @@ app.use((req, res, next) => {
 // Importação e uso das rotas
 const usuariosRoutes = require('./routes/usuarios');
 app.use('/usuarios', usuariosRoutes);
+
+// Importação e uso dos jogadores
+const jogadoresRoutes = require('./routes/jogadores');
+app.use('/jogadores', jogadoresRoutes);
 
 // Importação e uso das quadras
 const quadrasRoutes = require('./routes/quadras');

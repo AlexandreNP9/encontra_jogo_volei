@@ -1,11 +1,9 @@
-const db = require('../config/db');
-
 // Criar um novo jogador
 exports.criarJogador = (req, res) => {
     const { nome, data_nascimento, sexo } = req.body;
 
     const query = 'INSERT INTO jogadores (nome, data_nascimento, sexo) VALUES (?, ?, ?)';
-    db.query(query, [nome, data_nascimento, sexo], (err, result) => {
+    req.db.query(query, [nome, data_nascimento, sexo], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -18,7 +16,7 @@ exports.obterJogador = (req, res) => {
     const { id } = req.params;
 
     const query = 'SELECT * FROM jogadores WHERE id = ?';
-    db.query(query, [id], (err, result) => {
+    req.db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -35,7 +33,7 @@ exports.atualizarJogador = (req, res) => {
     const { nome, data_nascimento, sexo } = req.body;
 
     const query = 'UPDATE jogadores SET nome = ?, data_nascimento = ?, sexo = ? WHERE id = ?';
-    db.query(query, [nome, data_nascimento, sexo, id], (err) => {
+    req.db.query(query, [nome, data_nascimento, sexo, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -48,10 +46,23 @@ exports.deletarJogador = (req, res) => {
     const { id } = req.params;
 
     const query = 'DELETE FROM jogadores WHERE id = ?';
-    db.query(query, [id], (err) => {
+    req.db.query(query, [id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
         res.status(200).json({ message: 'Jogador deletado com sucesso!' });
+    });
+};
+
+// Obter todos os jogadores
+exports.obterTodosJogadores = (req, res) => {
+    const query = 'SELECT * FROM jogadores';
+    req.db.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar jogadores:', err);
+            res.status(500).json({ erro: 'Erro ao buscar jogadores' });
+        } else {
+            res.json(results);
+        }
     });
 };
