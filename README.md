@@ -22,12 +22,14 @@ No diretório encontra_jogo_volei/backend, edite o arquivo de configuração do 
 
 -> Executar o Backend:  
 Com o Node.js instalado, rode o servidor:  
+    npm install express
     node index.js  
 Porta padrão do Node.js: 3001  
 Versão do Node.js utilizada: v20.16.0  
 
 ### Frontend  
 No diretório encontra_jogo_volei/frontend, instale as dependências do projeto:  
+    npm install axios
     npm install  
     npm start  
 Porta padrão do React: 3000  
