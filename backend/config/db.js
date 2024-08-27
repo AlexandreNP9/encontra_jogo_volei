@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     connectionLimit: 10, // Número máximo de conexões no pool
     host: 'localhost',
     user: 'root',
-    password: '1963', // Verifique se esta senha está correta
+    password: 'root', // Verifique se esta senha está correta
     database: 'encontra_jogo_volei'
 });
 

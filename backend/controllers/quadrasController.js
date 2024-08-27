@@ -1,11 +1,9 @@
-const db = require('../config/db');
-
 // Criar uma nova quadra
 exports.criarQuadra = (req, res) => {
     const { nome, endereco } = req.body;
 
     const query = 'INSERT INTO quadras (nome, endereco) VALUES (?, ?)';
-    db.query(query, [nome, endereco], (err, result) => {
+    req.db.query(query, [nome, endereco], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -18,7 +16,7 @@ exports.obterQuadra = (req, res) => {
     const { id } = req.params;
 
     const query = 'SELECT * FROM quadras WHERE id = ?';
-    db.query(query, [id], (err, result) => {
+    req.db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -35,7 +33,7 @@ exports.atualizarQuadra = (req, res) => {
     const { nome, endereco } = req.body;
 
     const query = 'UPDATE quadras SET nome = ?, endereco = ? WHERE id = ?';
-    db.query(query, [nome, endereco, id], (err) => {
+    req.db.query(query, [nome, endereco, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -48,13 +46,23 @@ exports.deletarQuadra = (req, res) => {
     const { id } = req.params;
 
     const query = 'DELETE FROM quadras WHERE id = ?';
-    db.query(query, [id], (err, result) => {
+    req.db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Quadra não encontrada' });
-        }
         res.status(200).json({ message: 'Quadra deletada com sucesso!' });
+    });
+};
+
+// Obter todas as quadras
+exports.obterTodasQuadras = (req, res) => {
+    const query = 'SELECT * FROM quadras';
+    req.db.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar quadras:', err);
+            res.status(500).json({ erro: 'Erro ao buscar quadras' });
+        } else {
+            res.json(results);
+        }
     });
 };
