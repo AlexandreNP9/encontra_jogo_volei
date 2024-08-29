@@ -1,38 +1,22 @@
-const db = require('../config/db');
-
-// Criar um novo usuário e jogador associado
+// Criar um novo usuário
 exports.criarUsuario = (req, res) => {
-    const { email, senha, nome, data_nascimento, sexo } = req.body;
+    const { email, senha } = req.body;
 
-    db.query('INSERT INTO usuarios (email, senha) VALUES (?, ?)', [email, senha], (err, result) => {
+    const query = 'INSERT INTO usuarios (email, senha) VALUES (?, ?)';
+    req.db.query(query, [email, senha], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-
-        const usuarioId = result.insertId;
-
-        db.query('INSERT INTO jogadores (usuario_id, nome, data_nascimento, sexo) VALUES (?, ?, ?, ?)',
-            [usuarioId, nome, data_nascimento, sexo],
-            (err) => {
-                if (err) {
-                    return res.status(500).json({ error: err.message });
-                }
-                res.status(201).json({ message: 'Usuário e Jogador criados com sucesso!', usuarioId });
-            }
-        );
+        res.status(201).json({ message: 'Usuario criado com sucesso!', usuarioId: result.insertId });
     });
 };
 
-// Obter detalhes de um usuário específico (incluindo jogador)
+// Obter detalhes de um usuário específico
 exports.obterUsuario = (req, res) => {
     const { id } = req.params;
-    const query = `
-        SELECT u.id, u.email, u.data_criacao, j.nome, j.data_nascimento, j.sexo 
-        FROM usuarios u 
-        JOIN jogadores j ON u.id = j.usuario_id 
-        WHERE u.id = ?
-    `;
-    db.query(query, [id], (err, result) => {
+
+    const query = 'SELECT * FROM usuarios WHERE id = ?';
+    req.db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -43,45 +27,42 @@ exports.obterUsuario = (req, res) => {
     });
 };
 
-// Atualizar um usuário específico (e o jogador associado)
+// Atualizar um usuário específico
 exports.atualizarUsuario = (req, res) => {
     const { id } = req.params;
-    const { email, senha, nome, data_nascimento, sexo } = req.body;
+    const { email, senha } = req.body;
 
-    const queryUsuario = 'UPDATE usuarios SET email = ?, senha = ? WHERE id = ?';
-    const queryJogador = 'UPDATE jogadores SET nome = ?, data_nascimento = ?, sexo = ? WHERE usuario_id = ?';
-
-    db.query(queryUsuario, [email, senha, id], (err) => {
+    const query = 'UPDATE usuarios SET email = ?, senha = ? WHERE id = ?';
+    req.db.query(query, [email, senha, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-
-        db.query(queryJogador, [nome, data_nascimento, sexo, id], (err) => {
-            if (err) {
-                return res.status(500).json({ error: err.message });
-            }
-            res.status(200).json({ message: 'Usuário e Jogador atualizados com sucesso!' });
-        });
+        res.status(200).json({ message: 'Usuário atualizado com sucesso!' });
     });
 };
 
-// Deletar um usuário específico (e o jogador associado)
+// Deletar um usuário específico
 exports.deletarUsuario = (req, res) => {
     const { id } = req.params;
 
-    db.query('DELETE FROM jogadores WHERE usuario_id = ?', [id], (err) => {
+    const query = 'DELETE FROM usuarios WHERE id = ?';
+    req.db.query(query, [id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
+        res.status(200).json({ message: 'Usuários deletado com sucesso!' });
+    });
+};
 
-        db.query('DELETE FROM usuarios WHERE id = ?', [id], (err, result) => {
-            if (err) {
-                return res.status(500).json({ error: err.message });
-            }
-            if (result.affectedRows === 0) {
-                return res.status(404).json({ message: 'Usuário não encontrado' });
-            }
-            res.status(200).json({ message: 'Usuário e Jogador deletados com sucesso!' });
-        });
+// Obter todos os usuários
+exports.obterTodosUsuarios = (req, res) => {
+    const query = 'SELECT * FROM usuarios';
+    req.db.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar usuários:', err);
+            res.status(500).json({ erro: 'Erro ao buscar usuários' });
+        } else {
+            res.json(results);
+        }
     });
 };

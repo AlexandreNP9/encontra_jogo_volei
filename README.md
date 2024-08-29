@@ -14,7 +14,7 @@ Versão do MySQL Workbench utilizada: 8.0.38
 
 ### Backend  
 -> Configuração do Banco de Dados:  
-No diretório encontra_jogo_volei/backend, edite o arquivo de configuração do banco de dados para garantir que as credenciais estejam corretas:  
+No diretório \encontra_jogo_volei\backend\config\db.js, edite o arquivo de configuração do banco de dados para garantir que as credenciais estejam corretas:  
     host: 'localhost',  
     user: 'root',  
     password: 'root', // Verifique a senha do usuário root  
@@ -36,11 +36,6 @@ No diretório encontra_jogo_volei/frontend, instale as dependências do projeto:
     npm start  
 Porta padrão do React: 3000  
 Versão do npm utilizada: 10.8.1  
-
---------------------------------------------------
-
-## Especificações do Projeto  
-Para mais detalhes sobre o projeto, acesse: Especificações  
 
 --------------------------------------------------
 
