@@ -7,7 +7,6 @@ const Home = () => {
                 <h1>Encontra Jogo de Vôlei</h1>
                 <p>Selecione uma das opções abaixo para gerenciar:</p>
                 <ul>
-                    <li><a href="/usuarios">Gerenciar Usuários</a></li>
                     <li><a href="/quadras">Gerenciar Quadras</a></li>
                     <li><a href="/jogadores">Gerenciar Jogadores</a></li>
                     <li><a href="/jogos">Gerenciar Jogos</a></li>

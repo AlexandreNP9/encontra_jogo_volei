@@ -2,8 +2,8 @@
 exports.criarJogador = (req, res) => {
     const { nome, data_nascimento, sexo } = req.body;
 
-    const query = 'INSERT INTO jogadores (nome, data_nascimento, sexo) VALUES (?, ?, ?)';
-    req.db.query(query, [nome, data_nascimento, sexo], (err, result) => {
+    const query = 'INSERT INTO jogadores (email, senha, nome, data_nascimento, sexo, data_criacao) VALUES (?, ?, ?, ?, ?, ?)';
+    req.db.query(query, [email, senha, nome, data_nascimento, sexo, data_criacao], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -30,10 +30,10 @@ exports.obterJogador = (req, res) => {
 // Atualizar um jogador específico
 exports.atualizarJogador = (req, res) => {
     const { id } = req.params;
-    const { nome, data_nascimento, sexo } = req.body;
+    const { email, senha, nome, data_nascimento, sexo, data_criacao } = req.body;
 
-    const query = 'UPDATE jogadores SET nome = ?, data_nascimento = ?, sexo = ? WHERE id = ?';
-    req.db.query(query, [nome, data_nascimento, sexo, id], (err) => {
+    const query = 'UPDATE jogadores SET email = ?, senha = ?, nome = ?, data_nascimento = ?, sexo = ?, data_criacao = ? WHERE id = ?';
+    req.db.query(query, [email, senha, nome, data_nascimento, sexo, data_criacao, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
