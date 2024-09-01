@@ -1,6 +1,6 @@
 // Criar um novo jogador
 exports.criarJogador = (req, res) => {
-    const { nome, data_nascimento, sexo } = req.body;
+    const { email, senha, nome, data_nascimento, sexo, data_criacao } = req.body;
 
     const query = 'INSERT INTO jogadores (email, senha, nome, data_nascimento, sexo, data_criacao) VALUES (?, ?, ?, ?, ?, ?)';
     req.db.query(query, [email, senha, nome, data_nascimento, sexo, data_criacao], (err, result) => {

@@ -1,11 +1,9 @@
-const db = require('../config/db');
-
 // Criar um novo jogo
 exports.criarJogo = (req, res) => {
     const { organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero } = req.body;
 
     const query = 'INSERT INTO jogos (organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero], (err, result) => {
+    req.db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -13,23 +11,19 @@ exports.criarJogo = (req, res) => {
     });
 };
 
-// Obter todos os jogos ou filtrar por organizador
-exports.obterJogos = (req, res) => {
-    const { organizador_id } = req.query;
+// Obter detalhes de um jogo específico
+exports.obterJogo = (req, res) => {
+    const { id } = req.params;
 
-    let query = 'SELECT * FROM jogos';
-    const params = [];
-
-    if (organizador_id) {
-        query += ' WHERE organizador_id = ?';
-        params.push(organizador_id);
-    }
-
-    db.query(query, params, (err, result) => {
+    const query = 'SELECT * FROM jogo WHERE id = ?';
+    req.db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(200).json(result);
+        if (result.length === 0) {
+            return res.status(404).json({ message: 'Jogo não encontrada' });
+        }
+        res.status(200).json(result[0]);
     });
 };
 
@@ -40,7 +34,7 @@ exports.atualizarJogo = (req, res) => {
     const { organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero } = req.body;
 
     const query = 'UPDATE jogos SET organizador_id = ?, quadra_id = ?, nome = ?, data = ?, horario_inicio = ?, horario_fim = ?, genero = ? WHERE id = ?';
-    db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero, id], (err) => {
+    req.db.query(query, [organizador_id, quadra_id, nome, data, horario_inicio, horario_fim, genero, id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
@@ -52,10 +46,23 @@ exports.atualizarJogo = (req, res) => {
 exports.deletarJogo = (req, res) => {
     const { id } = req.params;
 
-    db.query('DELETE FROM jogos WHERE id = ?', [id], (err) => {
+    req.db.query('DELETE FROM jogos WHERE id = ?', [id], (err) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
         res.status(200).json({ message: 'Jogo deletado com sucesso!' });
+    });
+};
+
+// Obter todas os jogos
+exports.obterTodosJogos = (req, res) => {
+    const query = 'SELECT * FROM jogos';
+    req.db.query(query, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar jogos:', err);
+            res.status(500).json({ erro: 'Erro ao buscar jogos' });
+        } else {
+            res.json(results);
+        }
     });
 };

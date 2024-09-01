@@ -17,13 +17,11 @@ app.use((req, res, next) => {
 });
 
 // Importação e uso das rotas
-const usuariosRoutes = require('./routes/usuarios');
 const jogadoresRoutes = require('./routes/jogadores');
 const quadrasRoutes = require('./routes/quadras');
 const jogosRoutes = require('./routes/jogos');
 const inscricoesRoutes = require('./routes/inscricoes');
 
-app.use('/usuarios', usuariosRoutes);
 app.use('/jogadores', jogadoresRoutes);
 app.use('/quadras', quadrasRoutes);
 app.use('/jogos', jogosRoutes);

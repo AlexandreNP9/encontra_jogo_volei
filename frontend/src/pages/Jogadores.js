@@ -36,6 +36,7 @@ const GerenciarJogadores = () => {
             const response = await axios.post('http://localhost:3001/jogadores', novoJogador);
             setJogadores([...jogadores, response.data]);
             setNovoJogador({ email: '', senha: '', nome: '', data_nascimento: '', sexo: '' });
+            window.location.reload();
         } catch (error) {
             console.error('Erro ao adicionar jogador:', error);
         }
@@ -141,6 +142,7 @@ const GerenciarJogadores = () => {
                         <tr>
                             <th>ID</th>
                             <th>Email</th>
+                            <th>Senha</th>
                             <th>Nome</th>
                             <th>Data de Nascimento</th>
                             <th>Sexo</th>
@@ -153,6 +155,7 @@ const GerenciarJogadores = () => {
                             <tr key={jogador.id}>
                                 <td>{jogador.id}</td>
                                 <td>{jogador.email}</td>
+                                <td>{jogador.senha}</td>
                                 <td>{jogador.nome}</td>
                                 <td>{formatarData(jogador.data_nascimento)}</td>
                                 <td>{jogador.sexo}</td>

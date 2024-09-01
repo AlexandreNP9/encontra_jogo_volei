@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles.css';
 
-const Gerenciamento = () => {
+const GerenciarQuadras = () => {
     const [quadras, setQuadras] = useState([]);
     const [novaQuadra, setNovaQuadra] = useState({
         nome: '',
@@ -122,4 +122,4 @@ const Gerenciamento = () => {
     );
 };
 
-export default Gerenciamento;
+export default GerenciarQuadras;
