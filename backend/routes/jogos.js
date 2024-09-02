@@ -6,10 +6,10 @@ const { criarJogo, obterTodosJogos, obterJogo, atualizarJogo, deletarJogo } = re
 router.post('/', criarJogo);
 
 // Rota para obter todos os jogos ou filtrar por organizador
-router.get('/:id', obterJogo);
-
-// Rota para obter todos os jogos ou filtrar por organizador
 router.get('/', obterTodosJogos);
+
+// Rota para obter detalhes de um jogo específico
+router.get('/:id', obterJogo);
 
 // Rota para atualizar um jogo específico
 router.put('/:id', atualizarJogo);

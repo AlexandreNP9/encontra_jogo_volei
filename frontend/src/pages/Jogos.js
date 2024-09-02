@@ -20,9 +20,12 @@ const GerenciarJogos = () => {
     useEffect(() => {
         const fetchDados = async () => {
             try {
-                const responseJogos = await axios.get('http://localhost:3001/jogos');
-                const responseJogadores = await axios.get('http://localhost:3001/jogadores');
-                const responseQuadras = await axios.get('http://localhost:3001/quadras');
+                const [responseJogos, responseJogadores, responseQuadras] = await Promise.all([
+                    axios.get('http://localhost:3001/jogos'),
+                    axios.get('http://localhost:3001/jogadores'),
+                    axios.get('http://localhost:3001/quadras')
+                ]);
+
                 setJogos(responseJogos.data);
                 setJogadores(responseJogadores.data);
                 setQuadras(responseQuadras.data);
@@ -43,15 +46,6 @@ const GerenciarJogos = () => {
         try {
             const response = await axios.post('http://localhost:3001/jogos', novoJogo);
             setJogos([...jogos, response.data]);
-            setNovoJogo({
-                organizador_id: '',
-                quadra_id: '',
-                nome: '',
-                data: '',
-                horario_inicio: '',
-                horario_fim: '',
-                genero: '',
-            });
             window.location.reload();
         } catch (error) {
             console.error('Erro ao adicionar jogo:', error);
@@ -87,13 +81,12 @@ const GerenciarJogos = () => {
             setJogos(jogos.map(jogo => jogo.id === jogoEditando.id ? { ...jogo, ...response.data } : jogo));
             setJogoEditando(null);
             setNovoJogo({
-                organizador_id: '',
                 quadra_id: '',
                 nome: '',
                 data: '',
                 horario_inicio: '',
                 horario_fim: '',
-                genero: '',
+                genero: ''
             });
             window.location.reload();
         } catch (error) {
@@ -118,7 +111,6 @@ const GerenciarJogos = () => {
         const ano = date.getFullYear();
         return `${dia}/${mes}/${ano}`;
     };
-    
 
     document.title = "Gerenciar Jogos";
 
