@@ -8,7 +8,7 @@ const Home = () => {
                 <p>Selecione uma das opções abaixo para gerenciar:</p>
                 <ul>
                     <li><a href="/jogadores">Gerenciar Jogadores</a></li>
-                    <li><a href="/quadras">Gerenciar Quadras</a></li>
+                    <li><a href="/quadras">Gerenciar Quadras</a></li>                
                     <li><a href="/jogos">Gerenciar Jogos</a></li>
                     <li><a href="/inscricoes">Gerenciar Inscrições</a></li>
                 </ul>
