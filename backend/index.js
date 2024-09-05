@@ -27,6 +27,7 @@ app.use('/quadras', quadrasRoutes);
 app.use('/jogos', jogosRoutes);
 app.use('/inscricoes', inscricoesRoutes);
 
+
 // Porta do servidor
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

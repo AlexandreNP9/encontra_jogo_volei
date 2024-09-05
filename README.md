@@ -22,7 +22,8 @@ No diretório \encontra_jogo_volei\backend\config\db.js, edite o arquivo de conf
 
 -> Executar o Backend:  
 Com o Node.js instalado, rode o servidor:  
-    npm install express
+    npm install bcrypt  
+    npm install express  
     npm install mysql2  
     npm install cors  
     node index.js  
